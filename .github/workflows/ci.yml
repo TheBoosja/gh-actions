@@ -1,0 +1,36 @@
+name: Validation
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install packages
+        run: yarn install
+
+  build:
+    name: Build
+    needs: setup
+    run: yarn build
+
+  lint:
+    name: Lint
+    needs: setup
+    run: yarn lint
+
+  test:
+    name: Test
+    needs: setup
+    run: yarn test
+
