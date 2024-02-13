@@ -2,9 +2,9 @@ name: Validation
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   setup:
@@ -22,15 +22,17 @@ jobs:
   build:
     name: Build
     needs: setup
-    run: yarn build
+    steps:
+      - run: yarn build
 
   lint:
     name: Lint
     needs: setup
-    run: yarn lint
+    steps:
+      - run: yarn lint
 
   test:
     name: Test
     needs: setup
-    run: yarn test
-
+    steps:
+      - run: yarn test
