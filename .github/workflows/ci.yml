@@ -77,5 +77,5 @@ jobs:
     needs: deploy
     steps:
       - name: Get env
-        run: echo "The env is: ${{ needs.deploy.outputs.env }}"
+        run: echo "The env is ${{ needs.deploy.outputs.env }}"
 
